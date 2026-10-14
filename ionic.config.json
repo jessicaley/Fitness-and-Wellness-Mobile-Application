@@ -1,0 +1,7 @@
+{
+  "name": "GetFit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

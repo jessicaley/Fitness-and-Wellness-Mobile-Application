@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Progress</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<div class="progress-circle">
+  <div class="circle" [style.--progress]="progress/100">
+    <div class="content">
+      <h2>{{progress}}%</h2>
+      <p>Completed</p>
+    </div>
+  </div>
+</div>
+
+  <ion-list class="completed-list">
+    <ion-list-header>
+      <ion-label>Completed Workouts</ion-label>
+      <ion-badge color="primary">{{completedWorkouts.length}}</ion-badge>
+    </ion-list-header>
+
+    <ion-item *ngFor="let workout of completedWorkouts">
+      <ion-icon name="checkmark-circle" slot="start" color="primary"></ion-icon>
+      <ion-label>{{workout.name}}</ion-label>
+      <ion-note>{{workout.duration}} mins</ion-note>
+    </ion-item>
+
+    <ion-item *ngIf="completedWorkouts.length === 0">
+      <ion-label class="ion-text-center">No completed workouts yet!</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button 
+    expand="block" 
+    color="primary" 
+    (click)="resetProgress()"
+    class="reset-btn"
+  >
+    <ion-icon slot="start" name="refresh"></ion-icon>
+    Reset Progress
+  </ion-button>
+</ion-content>
